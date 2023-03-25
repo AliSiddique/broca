@@ -3,10 +3,10 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
+    <div className=' '>
       <Toaster position='top-right'/>
     <Component {...pageProps} />
-    </>
+    </div>
   )
 }
 
