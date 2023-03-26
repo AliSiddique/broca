@@ -17,10 +17,9 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { ArrowDownIcon } from '@heroicons/react/20/solid'
-import LangList from './LangList'
-import Prompts from './Prompts'
 import { toast } from 'react-hot-toast'
-import Editor from '@monaco-editor/react'
+import Stats from '../../components/app/stats'
+import Services from '../../components/app/services'
 
 
 const navigation = [
@@ -282,63 +281,14 @@ export default function Layout() {
               </div>
             </div>
           </div>
-          <div className='flex justify-between pt-4 bg-gray-900 text-white'>
-                <LangList selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson}/>
-                {selectedPerson.name}
-                <button
-                onClick={exportCode}
-                    type="button"
-                    className="inline-flex ring-gray-600 items-center gap-x-1.5 rounded-md  py-2 px-3 text-sm font-semibold  text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                    Export
-                    <ArrowDownIcon className="-ml-0.5 h-5 w-5 " aria-hidden="true" />
-
-                </button>
-            </div>
-          <main className="xl:pl-96">
+     
+          <main>
   
-            <div className="">
-            <Editor            
-            editorDidMount={setEditorTheme}
-            defineTheme={{
-              themeName: "onedark",
-              themeData: {
-                colors: {
-                  "editor.background": "#000000",
-                },
-              },
-            }}
-            height="90vh"
-            defaultLanguage="javascript"
-            language={selectedPerson.name}
-            defaultValue="// type your code..."
-            theme='vs-dark'
-            className='h-screen'
-            onChange={(value) => setCode(value)}
-            options={{
-              minimap: { enabled: false },
-              wordWrap: 'on',
-              automaticLayout: true,
-              fontSize: 16,
-              fontLigatures: true,
-              lineNumbers: 'on',
-              lineNumbersMinChars: 3,
-              scrollBeyondLastLine: false,
-              scrollbar: {
-                verticalScrollbarSize: 10,
-                horizontalScrollbarSize: 10,
-              },
-          
-
-              wordBasedSuggestions: true,
-            }}
-
-            />
+            <div className="p-4 h-screen">
+                <Stats/>
+                <Services/>
             </div>
-            <aside className="fixed top-32  bottom-0 left-20 hidden w-96 overflow-y-auto   xl:block">
-          {/* Secondary column (hidden on smaller screens) */}
-         <Prompts/>
-        </aside>
+      
           </main>
         </div>
 
