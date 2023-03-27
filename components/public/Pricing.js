@@ -59,12 +59,15 @@ function classNames(...classes) {
 
 export default function Pricing() {
   const [frequency, setFrequency] = useState(frequencies[0])
+  const [loading, setLoading] = useState(false)
   const handleSubmit = async (name,id) => {
+    setLoading(true)
     const response = await axios.post(`/api/payment/checkout`,{
       name,
       id
     })
     const data = await response.data
+    setLoading(false)
     window.location.href = data.session.url
   }
   return (
@@ -125,6 +128,7 @@ export default function Pricing() {
                 <span className="text-sm font-semibold leading-6 text-gray-300">{frequency.priceSuffix}</span>
               </p>
               <button
+              disabled={loading}
                 onClick={() => handleSubmit(tier.name,tier.priceId)}
                 aria-describedby={tier.id}
                 className={classNames(
@@ -134,7 +138,7 @@ export default function Pricing() {
                   'mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
                 )}
               >
-                Buy plan
+               {loading ? "Loading": "Buy"}
               </button>
               <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                 {tier.features.map((feature) => (

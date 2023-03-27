@@ -2,7 +2,7 @@ import { ArrowDownIcon, ArrowUpIcon } from '@heroicons/react/20/solid'
 import { ChartBarIcon, HeartIcon, TrophyIcon } from '@heroicons/react/24/outline'
 
 const stats = [
-  { id: 1, name: 'Efficiency', stat: '71,897', icon: TrophyIcon, change: '122', changeType: 'increase' },
+  { id: 1, name: 'Tokens used', stat: '71,897', icon: TrophyIcon, change: '122', changeType: 'increase' },
   { id: 2, name: 'Code health', stat: '58.16%', icon: HeartIcon, change: '5.4%', changeType: 'increase' },
   { id: 3, name: 'Code level', stat: '24.57%', icon: ChartBarIcon, change: '3.2%', changeType: 'decrease' },
 ]

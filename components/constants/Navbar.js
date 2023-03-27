@@ -14,8 +14,8 @@ import Link from 'next/link'
 
 const navigation = [
   { name: 'Product', href: '#' },
-  { name: 'Features', href: '#' },
-  { name: 'Marketplace', href: '#' },
+  { name: 'Pricing', href: '/public/pricing' },
+  { name: 'About', href: '#' },
   { name: 'Company', href: '#' },
 ]
 const features = [
@@ -73,9 +73,9 @@ export default function Navbar() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
+              <Link key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-white">
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
