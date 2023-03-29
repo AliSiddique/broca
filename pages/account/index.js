@@ -1,8 +1,8 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
+import { Monaco } from '@monaco-editor/react'
 import React from 'react'
 import { getSession } from '@auth0/nextjs-auth0'
-
 import {
   Bars3Icon,
   BellIcon,
@@ -21,6 +21,7 @@ import { ArrowDownIcon } from '@heroicons/react/20/solid'
 import { toast } from 'react-hot-toast'
 import Stats from '../../components/app/stats'
 import Services from '../../components/app/services'
+import Header from '../../components/account/header'
 
 
 const navigation = [
@@ -201,99 +202,18 @@ export default function Layout({user}) {
         </div>
 
         <div className="lg:pl-20 ">
+        <Header user={user}/>
           <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4  bg-gray-900 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-            <button type="button" className="-m-2.5 p-2.5 text-gray-700 lg:hidden" onClick={() => setSidebarOpen(true)}>
-              <span className="sr-only">Open sidebar</span>
-              <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            </button>
 
             {/* Separator */}
-            <div className="h-6 w-px bg-gray-900/10 lg:hidden" aria-hidden="true" />
-
-            <div className="flex  flex-1 gap-x-4 self-stretch lg:gap-x-6">
-              <form className="relative  flex flex-1" action="#" method="GET">
-                <label htmlFor="search-field" className="sr-only">
-                  Search
-                </label>
-                <MagnifyingGlassIcon
-                  className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
-                  aria-hidden="true"
-                />
-                <input
-                  id="search-field"
-                  className="block h-full w-full border-0 py-0 pl-8 pr-0 bg-gray-900 text-white placeholder:text-white  sm:text-sm"
-                  placeholder="Search..."
-                  type="search"
-                  name="search"
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-              </form>
-              <div className="flex items-center gap-x-4 lg:gap-x-6">
-                <button type="button" className="-m-2.5 p-2.5 text-gray-400 hover:text-gray-500">
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
-
-                {/* Separator */}
-                <div className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10" aria-hidden="true" />
-
-                {/* Profile dropdown */}
-                <Menu as="div" className="relative">
-                  <Menu.Button className="-m-1.5 flex items-center p-1.5">
-                    <span className="sr-only">Open user menu</span>
-                    <img
-                      className="h-8 w-8 rounded-full bg-gray-50"
-                      src={user.picture}
-                      alt=""
-                    />
-                    <span className="hidden lg:flex lg:items-center">
-                      <span className="ml-4 text-sm font-semibold leading-6 text-white" aria-hidden="true">
-                        {user.name}
-                      </span>
-                      <ChevronDownIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
-                    </span>
-                  </Menu.Button>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
-                      {userNavigation.map((item) => (
-                        <Menu.Item key={item.name}>
-                          {({ active }) => (
-                            <a
-                              href={item.href}
-                              className={classNames(
-                                active ? 'bg-gray-50' : '',
-                                'block px-3 py-1 text-sm leading-6 text-gray-900'
-                              )}
-                            >
-                              {item.name}
-                            </a>
-                          )}
-                        </Menu.Item>
-                      ))}
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              </div>
-            </div>
-          </div>
      
-          <main>
-  
-            <div className="p-4 h-screen">
-                <Stats/>
-                <Services search={search} setSearch={setSearch}/>
-            </div>
-      
-          </main>
+        </div>
+        
+        </div>
+        <div className='grid grid-cols-2 h-screen lg:pl-20'>
+            <h1>hel</h1>
+            <h1>wswwwww</h1>
+
         </div>
 
        
@@ -303,12 +223,9 @@ export default function Layout({user}) {
 }
 
 export const getServerSideProps = async (context) => {
-  const { req, res } = context;
-  const {user} = await getSession(context.req, context.res);
-
+    const {user} = await getSession(context.req, context.res);
   
-
-  return {
-    props: { user },
-  };
-}
+    return {
+        props: { user },
+    };
+    }

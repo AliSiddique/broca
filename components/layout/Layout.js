@@ -1,6 +1,7 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import { Monaco } from '@monaco-editor/react'
+import { getSession } from '@auth0/nextjs-auth0'
 import React from 'react'
 import {
   Bars3Icon,
@@ -21,6 +22,7 @@ import LangList from './LangList'
 import Prompts from './Prompts'
 import { toast } from 'react-hot-toast'
 import Editor from '@monaco-editor/react'
+import axios from 'axios'
 
 
 const navigation = [
@@ -40,28 +42,24 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Layout() {
+export default function Layout({user}) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [largeMenu, setLargeMenu] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState("java")
     const [code, setCode] = React.useState('');
-    function setEditorTheme(monaco) {
-      monaco.editor.defineTheme('onedark', {
-        base: 'vs-dark',
-        inherit: true,
-        rules: [
-          {
-            token: 'comment',
-            foreground: '#5d7988',
-            fontStyle: 'italic'
-          },
-          { token: 'constant', foreground: '#e06c75' }
-        ],
-        colors: {
-          'editor.background': '#21252b'
-        }
-      });
+    const [completedCode, setCompletedCode] = React.useState('');
+    useEffect(() => {
+      const change = code.replace("\n", '');
+      setCode(change)
+    }, [code])
+    const genCode = async () => {
+     const response =  await axios.post("/api/code/generate",{
+        code
+      })
+      console.log(response.data)
+      setCompletedCode(response.data.name)
     }
+
   const toastPrompt = () => {
     return toast('Saved!',
     {
@@ -241,12 +239,12 @@ export default function Layout() {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="h-8 w-8 rounded-full bg-gray-50"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      src={user.picture}
                       alt=""
                     />
                     <span className="hidden lg:flex lg:items-center">
                       <span className="ml-4 text-sm font-semibold leading-6 text-white" aria-hidden="true">
-                        Tom Cook
+                        {user.name}
                       </span>
                       <ChevronDownIcon className="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
                     </span>
@@ -282,7 +280,7 @@ export default function Layout() {
               </div>
             </div>
           </div>
-          <div className='flex justify-between pt-4 bg-gray-900 text-white'>
+          <div className='flex justify-between mt-4 bg-gray-900 text-white'>
                 <LangList selectedPerson={selectedPerson} setSelectedPerson={setSelectedPerson}/>
                 {selectedPerson.name}
                 <button
@@ -296,25 +294,16 @@ export default function Layout() {
                 </button>
             </div>
           <main className="xl:pl-96">
-  
+                                <button className='text-white' onClick={genCode}>Generate</button>
             <div className="">
             <Editor            
-            editorDidMount={setEditorTheme}
-            defineTheme={{
-              themeName: "onedark",
-              themeData: {
-                colors: {
-                  "editor.background": "#000000",
-                },
-              },
-            }}
             height="90vh"
             defaultLanguage="javascript"
             language={selectedPerson.name}
-            defaultValue="// type your code..."
+            value={code + completedCode}
+            onChange={(value) => setCode(value)}
             theme='vs-dark'
             className='h-screen'
-            onChange={(value) => setCode(value)}
             options={{
               minimap: { enabled: false },
               wordWrap: 'on',
@@ -328,14 +317,12 @@ export default function Layout() {
                 verticalScrollbarSize: 10,
                 horizontalScrollbarSize: 10,
               },
-          
-
               wordBasedSuggestions: true,
             }}
 
             />
             </div>
-            <aside className="fixed top-32  bottom-0 left-20 hidden w-96 overflow-y-auto   xl:block">
+            <aside className="fixed top-36  bottom-0 left-20 hidden w-96 overflow-y-auto   xl:block">
           {/* Secondary column (hidden on smaller screens) */}
          <Prompts/>
         </aside>

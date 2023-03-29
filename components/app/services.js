@@ -1,22 +1,8 @@
-import { EnvelopeIcon, LinkIcon, PhoneIcon } from '@heroicons/react/20/solid'
+import { people } from "./servicesData"
 
-const people = [
-  {
-    name: 'Generate code',
-    description: 'Write blog articles in minutes with the most advanced AI writing assistant.',
-    category: 'Code',
-    icon: LinkIcon,
-    imageUrl:
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-
-  
-  // More people...
-]
-
-export default function Services() {
+export default function Services({search, setSearch}) {
   return (
-    <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10">
+    <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-10 h-screen bg-gray-900">
       {people.map((person) => (
         <li key={person.email} className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
           <div className="flex w-full items-center justify-between space-x-6 p-6">
