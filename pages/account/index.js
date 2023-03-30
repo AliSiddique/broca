@@ -210,9 +210,9 @@ export default function Layout({user}) {
         </div>
         
         </div>
-        <div className='grid grid-cols-2 h-screen lg:pl-20'>
-            <h1>hel</h1>
-            <h1>wswwwww</h1>
+        <div className='grid grid-cols-3 h-screen lg:pl-20 justify-items-center	'>
+            <h1 className='grid-span-2 col-start-1 col-end-2 bg-red-600'>hel</h1>
+            <h1 className='grid-span-1 bg-yellow-400'>wswwwww</h1>
 
         </div>
 
