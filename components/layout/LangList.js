@@ -15,7 +15,7 @@
 import { useState } from 'react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { Combobox } from '@headlessui/react'
-
+import Image from 'next/image'
 const people = [
   {
     id: 1,
@@ -106,7 +106,7 @@ export default function LangList({selectedPerson,setSelectedPerson}) {
                 {({ active, selected }) => (
                   <>
                     <div className="flex items-center">
-                      <img src={person.imageUrl} alt="" className="h-6 w-6 flex-shrink-0 rounded-full" />
+                      <Image src={person.imageUrl} alt="" className="h-6 w-6 flex-shrink-0 rounded-full" />
                       <span className={classNames('ml-3 truncate', selected && 'font-semibold')}>{person?.name?.charAt(0).toUpperCase() + person?.name?.slice(1).toLowerCase()}</span>
                     </div>
 

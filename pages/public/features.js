@@ -7,7 +7,7 @@ import {
   ServerIcon,
 } from '@heroicons/react/20/solid'
 import Navbar from '../../components/constants/Navbar'
-
+import Image from 'next/image'
 const features = [
   {
     name: 'Push to deploy.',
@@ -57,8 +57,8 @@ export default function Example() {
       </div>
       <div className="relative overflow-hidden pt-16">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <img
-            src="https://tailwindui.com/img/component-images/project-app-screenshot.png"
+          <Image
+            src="https://tailwindui.com/Image/component-images/project-app-screenshot.png"
             alt="App screenshot"
             className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
             width={2432}

@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
+import Image from 'next/image'
 import React from 'react'
 import {
   Bars3Icon,
@@ -37,7 +38,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Settings() {
+export default function Settings({user}) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [largeMenu, setLargeMenu] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState("java")
@@ -132,7 +133,7 @@ export default function Settings() {
 
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
+                      <Image
                         className="h-12 w-auto rounded-full"
                         src="/logo.png"
                         alt="Your Company"
@@ -168,7 +169,7 @@ export default function Settings() {
         {/* Static sidebar for desktop */}
         <div onMouseLeave={() => setLargeMenu(false)} onMouseEnter={() => setLargeMenu(true)} className={largeMenu ? "hidden p-4 duration-200  lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-60 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4": "hidden lg:fixed p-4 lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 duration-700  lg:overflow-y-auto lg:bg-gray-900 lg:pb-4"}>
           <div className={largeMenu ? "flex h-16 shrink-0 items-center justify-start" : "flex h-16 shrink-0 items-center justify-center"}>
-            <img
+            <Image
               className="h-12 w-auto rounded-full"
               src="/logo.png"
               alt="Your Company"
@@ -236,7 +237,7 @@ export default function Settings() {
                 <Menu as="div" className="relative">
                   <Menu.Button className="-m-1.5 flex items-center p-1.5">
                     <span className="sr-only">Open user menu</span>
-                    <img
+                    <Image
                       className="h-8 w-8 rounded-full bg-gray-50"
                       src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                       alt=""
@@ -283,7 +284,7 @@ export default function Settings() {
           <main className="p-4">
   
             <div className="">
-                <SettingsForm/>
+                <SettingsForm user={user}/>
             </div>
             <aside className="fixed top-32  bottom-0 left-20 hidden w-96 overflow-y-auto   xl:block">
           {/* Secondary column (hidden on smaller screens) */}

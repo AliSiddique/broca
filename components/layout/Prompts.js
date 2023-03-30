@@ -1,3 +1,4 @@
+import Image from "next/image"
 const directory = {
     A: [
       {
@@ -216,7 +217,7 @@ const directory = {
                 <li key={person.id} className="bg-gray-900">
                   <div className="relative flex items-center space-x-3 px-6 py-5 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500 ">
                     <div className="flex-shrink-0">
-                      <img className="h-10 w-10 rounded-full" src={'https://plugins.jetbrains.com/files/12875/130789/icon/pluginIcon.png'} alt="" />
+                      <Image className="h-10 w-10 rounded-full" src={'https://plugins.jetbrains.com/files/12875/130789/icon/pluginIcon.png'} alt="" />
                       
                     </div>
                     <div className="min-w-0 flex-1">

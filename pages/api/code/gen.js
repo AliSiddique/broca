@@ -20,14 +20,3 @@ sgMail
   })
 
 
-
-const accountSid = 'ACeb0ed1563fc23141dc75167b759cb037';
-const authToken = 'b357e8c64327cfc13cc6ca975822683c';
-const client = require('twilio')(accountSid, authToken);
-
-client.messages
-    .create({
-                to: '+447479865538'
-    })
-    .then(message => console.log(message.sid))
-    .done();

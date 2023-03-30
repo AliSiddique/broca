@@ -11,6 +11,7 @@ import {
 import { CheckIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import Navbar from '../components/constants/Navbar'
+import Image from 'next/image'
 
 const navigation = [
   { name: 'Product', href: '#' },
@@ -262,7 +263,7 @@ export default function Example() {
               </div>
               <div className="mt-16 flow-root sm:mt-24">
                 <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                  <img
+                  <Image
                     src="/code.png"
                     alt="App screenshot"
                     width={2432}
@@ -303,37 +304,37 @@ export default function Example() {
         {/* Logo cloud */}
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-            <img
+            <Image
               className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg"
+              src="https://tailwindui.com/Image/logos/158x48/transistor-logo-gray-900.svg"
               alt="Transistor"
               width={158}
               height={48}
             />
-            <img
+            <Image
               className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg"
+              src="https://tailwindui.com/Image/logos/158x48/reform-logo-gray-900.svg"
               alt="Reform"
               width={158}
               height={48}
             />
-            <img
+            <Image
               className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg"
+              src="https://tailwindui.com/Image/logos/158x48/tuple-logo-gray-900.svg"
               alt="Tuple"
               width={158}
               height={48}
             />
-            <img
+            <Image
               className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg"
+              src="https://tailwindui.com/Image/logos/158x48/savvycal-logo-gray-900.svg"
               alt="SavvyCal"
               width={158}
               height={48}
             />
-            <img
+            <Image
               className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-              src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg"
+              src="https://tailwindui.com/Image/logos/158x48/statamic-logo-gray-900.svg"
               alt="Statamic"
               width={158}
               height={48}
@@ -384,7 +385,7 @@ export default function Example() {
         {/* Testimonial section */}
         <div className="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden bg-gray-900 py-20 px-6 shadow-xl sm:rounded-3xl sm:py-24 sm:px-10 md:px-12 lg:px-20">
-            <img
+            <Image
               className="absolute inset-0 h-full w-full object-cover brightness-150 saturate-0"
               src="https://images.unsplash.com/photo-1601381718415-a05fb0a261f3?ixid=MXwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8ODl8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1216&q=80"
               alt=""
@@ -426,7 +427,7 @@ export default function Example() {
               />
             </svg>
             <div className="relative mx-auto max-w-2xl lg:mx-0">
-              <img className="h-12 w-auto" src="https://tailwindui.com/img/logos/workcation-logo-white.svg" alt="" />
+              <Image className="h-12 w-auto" src="https://tailwindui.com/Image/logos/workcation-logo-white.svg" alt="" />
               <figure>
                 <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
                   <p>
@@ -613,9 +614,9 @@ export default function Example() {
             Footer
           </h2>
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
-            <img
+            <Image
               className="h-7"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              src="https://tailwindui.com/Image/logos/mark.svg?color=indigo&shade=600"
               alt="Company name"
             />
             <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">

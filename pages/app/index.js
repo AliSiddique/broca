@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Menu, Transition } from '@headlessui/react'
 import React from 'react'
 import { getSession } from '@auth0/nextjs-auth0'
-
+import Image from 'next/image'
 import {
   Bars3Icon,
   BellIcon,
@@ -136,7 +136,7 @@ export default function Layout({user}) {
 
                   <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-2 ring-1 ring-white/10">
                     <div className="flex h-16 shrink-0 items-center">
-                      <img
+                      <Image
                         className="h-12 w-auto rounded-full"
                         src="/logo.png"
                         alt="Your Company"
@@ -172,7 +172,7 @@ export default function Layout({user}) {
         {/* Static sidebar for desktop */}
         <div onMouseLeave={() => setLargeMenu(false)} onMouseEnter={() => setLargeMenu(true)} className={largeMenu ? "hidden p-4 duration-200  lg:fixed lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-60 lg:overflow-y-auto lg:bg-gray-900 lg:pb-4": "hidden lg:fixed p-4 lg:inset-y-0 lg:left-0 lg:z-50 lg:block lg:w-20 duration-700  lg:overflow-y-auto lg:bg-gray-900 lg:pb-4"}>
           <div className={largeMenu ? "flex h-16 shrink-0 items-center justify-start" : "flex h-16 shrink-0 items-center justify-center"}>
-            <img
+            <Image
               className="h-12 w-auto rounded-full"
               src="/logo.png"
               alt="Your Company"
@@ -242,7 +242,7 @@ export default function Layout({user}) {
                 <Menu as="div" className="relative">
                   <Menu.Button className="-m-1.5 flex items-center p-1.5">
                     <span className="sr-only">Open user menu</span>
-                    <img
+                    <Image
                       className="h-8 w-8 rounded-full bg-gray-50"
                       src={user.picture}
                       alt=""

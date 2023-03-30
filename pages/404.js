@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from "next/image";
 export default function FourOFour() {
     return (
       <>
@@ -12,9 +12,10 @@ export default function FourOFour() {
           ```
         */}
         <main className="relative isolate min-h-full h-screen">
-          <img
+          <Image
           src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
             alt=""
+            
             className="absolute inset-0 -z-10 h-full w-full object-cover object-top"
           />
           <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
