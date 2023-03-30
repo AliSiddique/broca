@@ -58,6 +58,8 @@ export default function Navbar() {
                 className="h-8 w-auto rounded-full"
                 src="/logo.png"
                 alt=""
+                width={100}
+                height={100}
               />
             </a>
           </div>

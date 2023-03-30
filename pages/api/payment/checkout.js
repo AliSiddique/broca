@@ -3,7 +3,7 @@ import stripeInit from 'stripe'
 
 const stripe = stripeInit(process.env.STRIPE_SECRET_KEY)
 export default async function handler(req, res) {
-    const {user} = await getSession(req,res)
+    // const {user} = await getSession(req,res)
 
     const {name,id} = req.body
     const lineItems = [{ 
@@ -14,7 +14,7 @@ export default async function handler(req, res) {
     const session = await stripe.checkout.sessions.create({
         line_items: lineItems,
         mode: 'subscription',
-        customer_email: user.email,
+        // customer_email: user.email,
         success_url: 'http://localhost:3000/payment/success',
         cancel_url: 'http://localhost:3000/public/pricing',
         subscription_data: {
