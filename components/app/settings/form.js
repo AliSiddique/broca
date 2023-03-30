@@ -154,7 +154,7 @@ export default function SettingsForm({user}) {
         <div className="px-4 sm:px-0">
           <h2 className="text-base font-semibold leading-7 text-white">Notifications</h2>
           <p className="mt-1 text-sm leading-6 text-gray-300">
-            We'll always let you know about important changes, but you pick what else you want to hear about.
+            Well always let you know about important changes, but you pick what else you want to hear about.
           </p>
         </div>
 
