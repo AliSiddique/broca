@@ -22,10 +22,10 @@ export default async function handler(req, res) {
             trial_period_days: 7,
           },
           payment_method_collection: 'if_required',
-        metadata: {
-            user: user.sub,
-            name,name
-        }
+        // metadata: {
+        //     user: user.sub,
+        //     name,name
+        // }
 
     })
    
