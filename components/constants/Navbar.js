@@ -13,10 +13,10 @@ import { CheckIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import Image from 'next/image'
 const navigation = [
-  { name: 'Product', href: '#' },
+  { name: 'Product', href: '/public/product' },
   { name: 'Pricing', href: '/public/pricing' },
-  { name: 'About', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Features', href: '/public/contact' },
+  { name: 'Contact', href: '/public/contact' },
 ]
 const features = [
   {

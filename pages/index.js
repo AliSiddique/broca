@@ -389,6 +389,8 @@ export default function Example() {
               className="absolute inset-0 h-full w-full object-cover brightness-150 saturate-0"
               src="https://images.unsplash.com/photo-1601381718415-a05fb0a261f3?ixid=MXwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8ODl8fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1216&q=80"
               alt=""
+              width={1216}
+              height={912}
             />
             <div className="absolute inset-0 bg-gray-900/90 mix-blend-multiply" />
             <svg
@@ -427,7 +429,7 @@ export default function Example() {
               />
             </svg>
             <div className="relative mx-auto max-w-2xl lg:mx-0">
-              <Image className="h-12 w-auto" src="https://tailwindui.com/Image/logos/workcation-logo-white.svg" alt="" />
+              <Image className="h-12 w-auto" src="https://tailwindui.com/Image/logos/workcation-logo-white.svg" width={200} height={200} alt="" />
               <figure>
                 <blockquote className="mt-6 text-lg font-semibold text-white sm:text-xl sm:leading-8">
                   <p>
@@ -618,6 +620,8 @@ export default function Example() {
               className="h-7"
               src="https://tailwindui.com/Image/logos/mark.svg?color=indigo&shade=600"
               alt="Company name"
+              width={100}
+              height={100}
             />
             <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
               <div className="md:grid md:grid-cols-2 md:gap-8">

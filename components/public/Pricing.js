@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import axios from 'axios'
+import { ClipLoader } from 'react-spinners'
 
 const frequencies = [
   { value: 'monthly', label: 'Monthly', priceSuffix: '/month' },
@@ -10,46 +11,47 @@ const frequencies = [
 const tiers = [
   {
     name: 'Starter',
-    id: 'tier-freelancer',
+    id: 'starter',
     href: '#',
-    price: { monthly: '$7.99', annually: '$144' },
-    description: 'The essentials to provide your best work for clients.',
+    price: { monthly: '$7.99', annually: '$79.99' },
+    description: 'The essentials to provide your best work for programmers.',
     features: ['5,000 credits', 'Efficiency checker', 'OpenAI reports', '10 products'],
     mostPopular: false,
-    priceId: 'price_1Mpv15LopXe2CPMsp1q7WdCz',
+    priceId: {monthly:'price_1Mpv15LopXe2CPMsp1q7WdCz',annually:'price_1MpvFrLopXe2CPMsyqKfPZZ1'},
   },
   {
     name: 'Basic',
-    id: 'tier-startup',
+    id: 'basic',
     href: '#',
-    price: { monthly: '$14.99', annually: '$288' },
-    description: 'A plan that scales with your rapidly growing business.',
+    price: { monthly: '$14.99', annually: '$129.99' },
+    description: 'A plan for programmers to get level up their skills.',
     features: [
-      '25 products',
-      'Up to 10,000 subscribers',
-      'Advanced analytics',
-      '24-hour support response time',
-      'Marketing automations',
+      '50,000 credits',
+      'Efficiency checker',
+      'OpenAI reports',
+      'Unlimited products',
+      'Premium access to new OpenAI APIs',
     ],
     mostPopular: true,
-    priceId: 'price_1Mpv1VLopXe2CPMsWLjXO3wW',
+    priceId: {monthly:'price_1Mpv1VLopXe2CPMsWLjXO3wW',annually:'price_1MpvKxLopXe2CPMsDRIdzu34'},
+
   },
   {
     name: 'Pro',
     id: 'tier-enterprise',
     href: '#',
-    price: { monthly: '$29.99', annually: '$576' },
-    description: 'Dedicated support and infrastructure for your company.',
+    price: { monthly: '$29.99', annually: '$299.99' },
+    description: 'The ultimate tool for porgrammers to get the best out of their work.',
     features: [
+      'Unlimited credits',
       'Unlimited products',
-      'Unlimited subscribers',
-      'Advanced analytics',
-      '1-hour, dedicated support response time',
-      'Marketing automations',
-      'Custom reporting tools',
+      'Premium access to new OpenAI APIs',
+      'Efficiency checker',
+      'OpenAI reports',
+      'Other programming features',
     ],
     mostPopular: false,
-    priceId: 'price_1Mpv1wLopXe2CPMs9B06e76v',
+    priceId: {monthly:'price_1Mpv1wLopXe2CPMs9B06e76v',annually:'price_1MpvLULopXe2CPMsbUDRbe6l'},
   },
 ]
 
@@ -74,14 +76,14 @@ export default function Pricing() {
     <div className="bg-gray-900 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-base font-semibold leading-7 text-indigo-400">Pricing</h2>
+          <h2 className="text-base font-semibold leading-7 text-sky-400">Pricing</h2>
           <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Pricing plans for teams of&nbsp;all&nbsp;sizes
+            Pricing plans for programmers of&nbsp;all&nbsp;capabilities
           </p>
         </div>
         <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-8 text-gray-300">
-          Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer
-          loyalty, and driving sales.
+          Choose an affordable plan that’s packed with the best features for debugging your work, creating efficient
+          code, and getting the best out of your work.
         </p>
         <div className="mt-16 flex justify-center">
           <RadioGroup
@@ -95,7 +97,7 @@ export default function Pricing() {
                 key={option.value}
                 value={option}
                 className={({ checked }) =>
-                  classNames(checked ? 'bg-indigo-500' : '', 'cursor-pointer rounded-full py-1 px-2.5')
+                  classNames(checked ? 'bg-sky-500' : '', 'cursor-pointer rounded-full py-1 px-2.5')
                 }
               >
                 <span>{option.label}</span>
@@ -108,7 +110,7 @@ export default function Pricing() {
             <div
               key={tier.id}
               className={classNames(
-                tier.mostPopular ? 'bg-white/5 ring-2 ring-indigo-500' : 'ring-1 ring-white/10',
+                tier.mostPopular ? 'bg-white/5 ring-2 ring-sky-500' : 'ring-1 ring-white/10',
                 'rounded-3xl p-8 xl:p-10'
               )}
             >
@@ -117,7 +119,7 @@ export default function Pricing() {
                   {tier.name}
                 </h3>
                 {tier.mostPopular ? (
-                  <p className="rounded-full bg-indigo-500 py-1 px-2.5 text-xs font-semibold leading-5 text-white">
+                  <p className="rounded-full bg-sky-500 py-1 px-2.5 text-xs font-semibold leading-5 text-white">
                     Most popular
                   </p>
                 ) : null}
@@ -129,21 +131,21 @@ export default function Pricing() {
               </p>
               <button
               disabled={loading}
-                onClick={() => handleSubmit(tier.name,tier.priceId)}
+                onClick={() => handleSubmit(tier.name,tier.priceId[frequency.value])}
                 aria-describedby={tier.id}
                 className={classNames(
                   tier.mostPopular
-                    ? 'bg-indigo-500 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline-indigo-500'
+                    ? 'bg-sky-500 text-white shadow-sm hover:bg-sky-400 focus-visible:outline-sky-500'
                     : 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white',
                   'mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
                 )}
               >
-               {loading ? "Loading": "Buy"}
+               {loading ? <ClipLoader color="#212121" size={15} />: "Buy"}
               </button>
               <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex gap-x-3">
-                    <CheckIcon className="h-6 w-5 flex-none text-white" aria-hidden="true" />
+                    <CheckIcon className="h-6 w-5 flex-none text-green-400" aria-hidden="true" />
                     {feature}
                   </li>
                 ))}

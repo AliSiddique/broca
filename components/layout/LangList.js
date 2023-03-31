@@ -106,7 +106,10 @@ export default function LangList({selectedPerson,setSelectedPerson}) {
                 {({ active, selected }) => (
                   <>
                     <div className="flex items-center">
-                      <Image src={person.imageUrl} alt="" className="h-6 w-6 flex-shrink-0 rounded-full" />
+                      <Image src={person.imageUrl} alt="" className="h-6 w-6 flex-shrink-0 rounded-full"
+                      width={30}
+                      height={30}
+                      />
                       <span className={classNames('ml-3 truncate', selected && 'font-semibold')}>{person?.name?.charAt(0).toUpperCase() + person?.name?.slice(1).toLowerCase()}</span>
                     </div>
 

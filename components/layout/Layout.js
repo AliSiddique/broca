@@ -138,6 +138,8 @@ export default function Layout({user}) {
                         className="h-12 w-auto rounded-full"
                         src="/logo.png"
                         alt="Your Company"
+                        width={48}
+                        height={48}
                       />
                     </div>
                     <nav className="flex flex-1 flex-col">
@@ -174,6 +176,8 @@ export default function Layout({user}) {
               className="h-12 w-auto rounded-full"
               src="/logo.png"
               alt="Your Company"
+              width={48}
+              height={48}
             />
             <span className={largeMenu ? 'text-white pl-6 font-bold' : "" }>{largeMenu ? "Broca" : ""}</span>
           </div>
@@ -242,6 +246,8 @@ export default function Layout({user}) {
                       className="h-8 w-8 rounded-full bg-gray-50"
                       src={user.picture}
                       alt=""
+                      width={32}
+                      height={32}
                     />
                     <span className="hidden lg:flex lg:items-center">
                       <span className="ml-4 text-sm font-semibold leading-6 text-white" aria-hidden="true">
