@@ -1,8 +1,8 @@
-import { getSession } from '@auth0/nextjs-auth0'
+import { getSession, withApiAuthRequired } from '@auth0/nextjs-auth0'
 import stripeInit from 'stripe'
 
 const stripe = stripeInit(process.env.STRIPE_SECRET_KEY)
-export default async function handler(req, res) {
+export default withApiAuthRequired(async function handler(req, res) {
     const {user} = await getSession(req,res)
 
     const {name,id} = req.body
@@ -33,4 +33,4 @@ export default async function handler(req, res) {
 
     res.status(200).json({ session: session})
   }
-  
+)
