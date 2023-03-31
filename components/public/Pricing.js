@@ -110,7 +110,7 @@ export default function Pricing() {
             <div
               key={tier.id}
               className={classNames(
-                tier.mostPopular ? 'bg-white/5 ring-2 ring-sky-500' : 'ring-1 ring-white/10',
+                tier.mostPopular ? 'bg-white/5 ring-2 ring-sky-500 shadow-xl shadow-sky-500' : 'ring-1 ring-white/10',
                 'rounded-3xl p-8 xl:p-10'
               )}
             >
@@ -135,7 +135,7 @@ export default function Pricing() {
                 aria-describedby={tier.id}
                 className={classNames(
                   tier.mostPopular
-                    ? 'bg-sky-500 text-white shadow-sm hover:bg-sky-400 focus-visible:outline-sky-500'
+                    ? 'bg-sky-500 text-white shadow-sm hover:bg-sky-400  focus-visible:outline-sky-500'
                     : 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white',
                   'mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
                 )}
