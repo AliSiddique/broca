@@ -24,12 +24,22 @@ export default function Header({user}) {
   return (
     <div>
       <div>
-        <Image className="h-64 w-full object-cover lg:h-74 aspect-square" src="./back.avif" alt="" />
+        <Image className="h-64 w-full object-cover lg:h-74 aspect-square"
+        width={
+          1920
+        }
+        height={
+          1080
+        }
+        src="/back.avif" alt="" />
       </div>
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <div className="-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
           <div className="flex">
-            <Image className="h-24 w-24 rounded-full ring-4 ring-gray-900 sm:h-32 sm:w-32" src={user.picture || "https://avatars.githubusercontent.com/u/78370889?v=4"} alt="" />
+            <Image className="h-24 w-24 rounded-full ring-4 ring-gray-900 sm:h-32 sm:w-32"
+            width={100}
+            height={100}
+            src={user.picture || "https://avatars.githubusercontent.com/u/78370889?v=4"} alt="" />
           </div>
           <div className="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
             <div className="mt-6 min-w-0 flex-1 sm:hidden md:block">

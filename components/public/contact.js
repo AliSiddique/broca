@@ -117,7 +117,7 @@ export default function Contact() {
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-white">Get in touch</h2>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Have a question? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              Have a question? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
             </p>
             <dl className="mt-10 space-y-4 text-base leading-7 text-gray-300">
               <div className="flex gap-x-4">

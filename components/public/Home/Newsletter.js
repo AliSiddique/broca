@@ -48,7 +48,7 @@ export default function Newsletter() {
               className="absolute left-1/2 top-1/2 -z-10 h-[64rem] w-[64rem] -translate-x-1/2"
               aria-hidden="true"
             >
-              <circle cx={512} cy={512} r={512} fill="url(#2599FF-0410-454c-8f7c-9a820de03641)" fillOpacity="0.7" />
+              <circle cx={512} cy={512} r={512} fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fillOpacity="0.7" />
               <defs>
                 <radialGradient
                   id="759c1415-0410-454c-8f7c-9a820de03641"

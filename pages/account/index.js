@@ -138,6 +138,8 @@ export default function Layout({user}) {
                         className="h-12 w-auto rounded-full"
                         src="/logo.png"
                         alt="Your Company"
+                        width={48}
+                        height={48}
                       />
                     </div>
                     <nav className="flex flex-1 flex-col">
@@ -174,6 +176,8 @@ export default function Layout({user}) {
               className="h-12 w-auto rounded-full"
               src="/logo.png"
               alt="Your Company"
+              width={48}
+              height={48}
             />
             <span className={largeMenu ? 'text-white pl-6 font-bold' : "" }>{largeMenu ? "Broca" : ""}</span>
           </div>
@@ -213,11 +217,11 @@ export default function Layout({user}) {
       <div className="pb-8">
        
 
-        <form className="bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
+        <form className="bg-gradient-to-r from-gray-700 via-gray-900 to-black overflow-hidden bg-gray-900  shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl md:col-span-2">
           <div className="px-4 py-6 sm:p-8">
             <div className="grid max-w-2xl grid-cols-1 gap-y-8 gap-x-6 sm:grid-cols-6">
               <div className="sm:col-span-3">
-                <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-white">
                   First name
                 </label>
                 <div className="mt-2">
@@ -234,7 +238,7 @@ export default function Layout({user}) {
               </div>
 
               <div className="sm:col-span-3">
-                <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-white">
                   Last name
                 </label>
                 <div className="mt-2">
@@ -245,13 +249,13 @@ export default function Layout({user}) {
                     id="last-name"
                     value={user.name.split(' ')[1]}
                     autoComplete="family-name"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
               <div className="sm:col-span-4">
-                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
                   Email address
                 </label>
                 <div className="mt-2">
@@ -262,14 +266,14 @@ export default function Layout({user}) {
                     type="email"
                     value={user.email}
                     autoComplete="email"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
            
               <div className="col-span-full">
-                <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-white">
                   Locale
                 </label>
                 <div className="mt-2">
@@ -280,13 +284,13 @@ export default function Layout({user}) {
                     value={user.locale}
                     id="street-address"
                     autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
 
               <div className="col-span-full">
-                <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-gray-900">
+                <label htmlFor="street-address" className="block text-sm font-medium leading-6 text-white">
                   Nickname
                 </label>
                 <div className="mt-2">
@@ -297,7 +301,7 @@ export default function Layout({user}) {
                     value={user.nickname}
                     id="street-address"
                     autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
               </div>
@@ -305,8 +309,8 @@ export default function Layout({user}) {
 
             </div>
             <fieldset>
-                <legend className="text-sm font-semibold leading-6 text-gray-900"> Notifications</legend>
-                <p className="mt-1 text-sm leading-6 text-gray-600">
+                <legend className="text-sm font-semibold leading-6 text-white pt-3"> Notifications</legend>
+                <p className="mt-1 text-sm leading-6 text-white">
                   
                 </p>
                 <div className="mt-6 space-y-6">
@@ -315,9 +319,9 @@ export default function Layout({user}) {
                       id="push-everything"
                       name="push-notifications"
                       type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-indigo-600"
                     />
-                    <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label htmlFor="push-everything" className="block text-sm font-medium leading-6 text-white">
                       SMS
                     </label>
                   </div>
@@ -326,9 +330,9 @@ export default function Layout({user}) {
                       id="push-email"
                       name="push-notifications"
                       type="radio"
-                      className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                      className="h-4 w-4 border-gray-300 text-sky-600 focus:ring-indigo-600"
                     />
-                    <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label htmlFor="push-email" className="block text-sm font-medium leading-6 text-white">
                       Email
                     </label>
                   </div>
@@ -339,7 +343,7 @@ export default function Layout({user}) {
                       type="radio"
                       className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
-                    <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-gray-900">
+                    <label htmlFor="push-nothing" className="block text-sm font-medium leading-6 text-white">
                       No  notifications
                     </label>
                   </div>
