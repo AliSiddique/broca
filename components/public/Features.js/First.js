@@ -10,33 +10,33 @@ import Image from 'next/image'
   
   const features = [
     {
-      name: 'Push to deploy.',
-      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
+      name: 'OpenAI',
+      description: 'Using OpenAI, we can help you get started with AI.',
       icon: CloudArrowUpIcon,
     },
     {
-      name: 'SSL certificates.',
-      description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+      name: 'Code editor',
+      description: 'Handy code editor with syntax highlighting and code completion',
       icon: LockClosedIcon,
     },
     {
-      name: 'Simple queues.',
-      description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.',
+      name: 'Beautiful UI',
+      description: 'Beautiful UI to provide a great experience',
       icon: ArrowPathIcon,
     },
     {
-      name: 'Advanced security.',
-      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
+      name: 'Intelligent Completion',
+      description: 'Intelligent completion with context-aware suggestions',
       icon: FingerPrintIcon,
     },
     {
-      name: 'Powerful API.',
-      description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+      name: 'Simple Pricing.',
+      description: 'Simple pricing model for all your needs',
       icon: Cog6ToothIcon,
     },
     {
-      name: 'Database backups.',
-      description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. ',
+      name: 'Regular Updates',
+      description: 'We are constantly updating our products to keep up to date',
       icon: ServerIcon,
     },
   ]
@@ -46,18 +46,17 @@ import Image from 'next/image'
       <div className="bg-gray-900 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="text-base font-semibold leading-7 text-indigo-400">Everything you need</h2>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">No server? No problem.</p>
+            <h2 className="text-base font-semibold leading-7 text-sky-400">Everything you need</h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Don't know how to use AI? We can help!</p>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste
-              dolor cupiditate blanditiis.
+              Using a beautiful UI, we can help you get started with AI. We have a simple pricing model, and we're always adding new features.
             </p>
           </div>
         </div>
         <div className="relative overflow-hidden pt-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <Image
-              src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+              src="/code.png"
               alt="App screenshot"
               className="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-white/10"
               width={2432}
