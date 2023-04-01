@@ -4,6 +4,8 @@ import stripeInit from 'stripe'
 const stripe = stripeInit(process.env.STRIPE_SECRET_KEY)
 export default withApiAuthRequired(async function handler(req, res) {
     const {user} = await getSession(req,res)
+    let success_url;
+    let cancel_url;
     const environment = process.env.NODE_ENV 
     if(environment === 'development') {
       success_url = 'http://localhost:3000/payment/success'
