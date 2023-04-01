@@ -4,7 +4,14 @@ import stripeInit from 'stripe'
 const stripe = stripeInit(process.env.STRIPE_SECRET_KEY)
 export default withApiAuthRequired(async function handler(req, res) {
     const {user} = await getSession(req,res)
-
+    const environment = process.env.NODE_ENV 
+    if(environment === 'development') {
+      success_url = 'http://localhost:3000/payment/success'
+      cancel_url = 'http://localhost:3000/public/pricing'
+    } else {
+      success_url = 'https://broca.vercel.app/payment/success'
+      cancel_url = 'https://broca.vercel.app/public/pricing'
+    }
     const {name,id} = req.body
     const lineItems = [{ 
         price: id,
@@ -15,8 +22,8 @@ export default withApiAuthRequired(async function handler(req, res) {
         line_items: lineItems,
         mode: 'subscription',
         customer_email: user.email,
-        success_url: 'http://localhost:3000/payment/success',
-        cancel_url: 'http://localhost:3000/public/pricing',
+        success_url: success_url,
+        cancel_url: cancel_url,
         subscription_data: {
             trial_settings: {end_behavior: {missing_payment_method: 'cancel'}},
             trial_period_days: 1,
