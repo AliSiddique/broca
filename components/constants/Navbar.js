@@ -15,7 +15,7 @@ import Image from 'next/image'
 const navigation = [
   { name: 'Product', href: '/public/product' },
   { name: 'Pricing', href: '/public/pricing' },
-  { name: 'Features', href: '/public/contact' },
+  { name: 'Features', href: '/public/features' },
   { name: 'Contact', href: '/public/contact' },
 ]
 const features = [

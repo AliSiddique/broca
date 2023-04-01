@@ -5,16 +5,15 @@ export default async function handler(req, res) {
     const {firstName,lastName,email,phone,message} = req.body
     sgMail.setApiKey(process.env.SENGRID_API_KEY)
     const htmlContent = `
-    <h1 style='color:"white"'>From ${firstName} ${lastName}</h1>
-    <p>from ${email}</p>
-    <small>${phone}</small>
-    <strong>${message}/strong>
-    <p>Cheers - Ali</p>
+    <h1>Hello Ali,</h1>
+    <p>You have recieved an email from Broca.ai from <strong> ${firstName} ${lastName}</strong></p>
+    <strong>They have said: ${message}</strong> <br/>
+    <small>You can reply to them by using the email: ${email}</small>
     `
     const msg = {
         to: 'alisiddique0402@gmail.com', // Change to your recipient
         from: 'alisiddique10@hotmail.com', // Change to your verified sender
-        subject: 'Sending with SendGrid is Fun',
+        subject: 'Message from your website',
         text: 'and easy to do anywhere, even with Node.js',
         html: htmlContent,
       }
