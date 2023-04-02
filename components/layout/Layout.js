@@ -49,6 +49,7 @@ export default function Layout({user}) {
     const [selectedPerson, setSelectedPerson] = useState("java")
     const [code, setCode] = React.useState('');
     const [completedCode, setCompletedCode] = React.useState('');
+    const [allowed, setAllowed] = React.useState(false);
     useEffect(() => {
       const change = code.replace("\n", '');
       setCode(change)

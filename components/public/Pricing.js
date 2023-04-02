@@ -13,7 +13,7 @@ const tiers = [
     name: 'Starter',
     id: 'starter',
     href: '#',
-    price: { monthly: '$7.99', annually: '$79.99' },
+    price: { monthly: '7.99', annually: '79.99' },
     description: 'The essentials to provide your best work for programmers.',
     features: ['5,000 credits', 'Efficiency checker', 'OpenAI reports', '10 products'],
     mostPopular: false,
@@ -23,7 +23,7 @@ const tiers = [
     name: 'Basic',
     id: 'basic',
     href: '#',
-    price: { monthly: '$14.99', annually: '$129.99' },
+    price: { monthly: '14.99', annually: '149.99' },
     description: 'A plan for programmers to get level up their skills.',
     features: [
       '50,000 credits',
@@ -40,7 +40,7 @@ const tiers = [
     name: 'Pro',
     id: 'tier-enterprise',
     href: '#',
-    price: { monthly: '$29.99', annually: '$299.99' },
+    price: { monthly: '29.99', annually: '289.99' },
     description: 'The ultimate tool for porgrammers to get the best out of their work.',
     features: [
       'Unlimited credits',
@@ -51,7 +51,7 @@ const tiers = [
       'Other programming features',
     ],
     mostPopular: false,
-    priceId: {monthly:'price_1Mpv1wLopXe2CPMs9B06e76v',annually:'price_1MpvLULopXe2CPMsbUDRbe6l'},
+    priceId: {monthly:'price_1MsQbjLopXe2CPMsCInTOT72',annually:'price_1MsQbzLopXe2CPMs7zN0fT5X'},
   },
 ]
 
@@ -126,7 +126,7 @@ export default function Pricing() {
               </div>
               <p className="mt-4 text-sm leading-6 text-gray-300">{tier.description}</p>
               <p className="mt-6 flex items-baseline gap-x-1">
-                <span className="text-4xl font-bold tracking-tight text-white">{tier.price[frequency.value]}</span>
+                <span className="text-4xl font-bold tracking-tight text-white">£{tier.price[frequency.value]}</span>
                 <span className="text-sm font-semibold leading-6 text-gray-300">{frequency.priceSuffix}</span>
               </p>
               <button
