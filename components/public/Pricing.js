@@ -63,6 +63,7 @@ function classNames(...classes) {
 }
 
 export default function Pricing() {
+
   const [frequency, setFrequency] = useState(frequencies[0])
   const [loading, setLoading] = useState(false)
   const handleSubmit = async (name,id,tokens) => {
@@ -161,3 +162,4 @@ export default function Pricing() {
     </div>
   )
 }
+

@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../../components/layout/Layout'
-import { getSession } from '@auth0/nextjs-auth0'
+import { getSession, withPageAuthRequired } from '@auth0/nextjs-auth0'
 import clientPromise  from '../../lib/mongodb'
 
 export default function all({user}) {
@@ -13,7 +13,7 @@ export default function all({user}) {
   )
 }
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = withPageAuthRequired(async (context) => {
   const { req, res } = context;
   const {user} = await getSession(context.req, context.res);
 
@@ -32,3 +32,4 @@ export const getServerSideProps = async (context) => {
     props: { user },
   };
 }
+)

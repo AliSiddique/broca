@@ -81,7 +81,7 @@ export default function Navbar() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link href={`/api/auth/login`} className="text-sm font-semibold leading-6 text-white">
+            <Link href={`/app/all`} className="text-sm font-semibold leading-6 text-white">
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
