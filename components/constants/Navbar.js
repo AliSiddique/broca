@@ -88,7 +88,7 @@ export default function Navbar() {
         </nav>
         <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
           <div className="fixed inset-0 z-50" />
-          <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-gradient-to-r from-gray-700 via-gray-900 to-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div className="flex items-center justify-between">
               <Link href="/" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
@@ -96,6 +96,8 @@ export default function Navbar() {
                   className="h-8 w-auto rounded-full"
                   src="/logo.png"
                   alt=""
+                  width={100}
+                  height={100}
                 />
               </Link>
               <button
@@ -114,7 +116,7 @@ export default function Navbar() {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-white hover:bg-gray-50"
+                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-semibold leading-7 text-white hover:bg-gray-50 hover:text-gray-900"
                     >
                       {item.name}
                     </Link>
@@ -122,8 +124,8 @@ export default function Navbar() {
                 </div>
                 <div className="py-6">
                   <Link
-                    href={`/api/auth/login`}
-                    className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    href={`/app/all`}
+                    className="-mx-3 block rounded-lg py-2.5 px-3 text-base font-semibold leading-7 text-white hover:bg-gray-50 hover:text-gray-900"
                   >
                     Log in
                   </Link>
