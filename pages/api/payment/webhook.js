@@ -1,7 +1,6 @@
 import verifyStripe from '@webdeveducation/next-verify-stripe'
 import Cors from 'micro-cors'
 import Stripe from 'stripe'
-import { getSession } from '@auth0/nextjs-auth0'
 import clientPromise from '../../../lib/mongodb'
 const sgMail = require('@sendgrid/mail')
 
@@ -28,7 +27,6 @@ export const config = {
 const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
 const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET
 const handler = async (req, res) => {
-    const {user} = await getSession(req,res)
     sgMail.setApiKey(process.env.SENGRID_API_KEY)
     if(req.method == 'POST'){
         let event;
@@ -51,10 +49,11 @@ const handler = async (req, res) => {
                 const paymentIntent = event.data.object
                 const auth0Id = paymentIntent.metadata.user
                 const name = paymentIntent.metadata.name
+                const tokens = paymentIntent.metadata.tokens
                 const userProfile = await db.collection('user').updateOne({
                         auth0Id
                 },{ 
-                    $inc: {tokens: 1},
+                    $inc: {tokens: parseInt(tokens)},
                     $set:{subscription:name}
                     ,$setOnInsert: {auth0Id}
                 },{upsert: true}
@@ -76,6 +75,8 @@ const handler = async (req, res) => {
                     text: 'Trial about to expire',
                     html: htmlContent,
                   }
+                  const response = await sgMail.send(msg)
+
             }
             break;
             case 'invoice.created' : {
@@ -99,6 +100,20 @@ const handler = async (req, res) => {
                     $set: {subscription: 'free'}
                 })
             }
+            case 'invoice.paid' : {
+                const invoice = event.data.object
+                const client  = await clientPromise
+                const db = await client.db("brack")
+               const name = event.data.object.metadata.name
+
+            
+                const userProfile = await db.collection('user').updateOne({
+                    auth0Id: invoice.metadata.user
+                },{
+                    $set: {subscription: name}
+                })
+            }
+
             break;
          
             default:

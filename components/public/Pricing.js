@@ -18,6 +18,7 @@ const tiers = [
     features: ['5,000 credits', 'Efficiency checker', 'OpenAI reports', '10 products'],
     mostPopular: false,
     priceId: {monthly:'price_1Mpv15LopXe2CPMsp1q7WdCz',annually:'price_1MpvFrLopXe2CPMsyqKfPZZ1'},
+    tokens:{monthly:5000,annually:60000}
   },
   {
     name: 'Basic',
@@ -34,6 +35,7 @@ const tiers = [
     ],
     mostPopular: true,
     priceId: {monthly:'price_1Mpv1VLopXe2CPMsWLjXO3wW',annually:'price_1MpvKxLopXe2CPMsDRIdzu34'},
+    tokens:{monthly:50000,annually:600000}
 
   },
   {
@@ -52,6 +54,7 @@ const tiers = [
     ],
     mostPopular: false,
     priceId: {monthly:'price_1MsQbjLopXe2CPMsCInTOT72',annually:'price_1MsQbzLopXe2CPMs7zN0fT5X'},
+    tokens:{monthly:10000000000,annually:10000000}
   },
 ]
 
@@ -62,11 +65,12 @@ function classNames(...classes) {
 export default function Pricing() {
   const [frequency, setFrequency] = useState(frequencies[0])
   const [loading, setLoading] = useState(false)
-  const handleSubmit = async (name,id) => {
+  const handleSubmit = async (name,id,tokens) => {
     setLoading(true)
     const response = await axios.post(`/api/payment/checkout`,{
       name,
-      id
+      id,
+      tokens
     })
     const data = await response.data
     setLoading(false)
@@ -131,7 +135,7 @@ export default function Pricing() {
               </p>
               <button
               disabled={loading}
-                onClick={() => handleSubmit(tier.name,tier.priceId[frequency.value])}
+                onClick={() => handleSubmit(tier.name,tier.priceId[frequency.value],tier.tokens[frequency.value])}
                 aria-describedby={tier.id}
                 className={classNames(
                   tier.mostPopular
@@ -146,7 +150,7 @@ export default function Pricing() {
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex gap-x-3">
                     <CheckIcon className="h-6 w-5 flex-none text-green-400" aria-hidden="true" />
-                    {feature}
+                    {feature.includes('credits') && tier.name != "Pro" ? tier.tokens[frequency.value].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " credits" : feature}
                   </li>
                 ))}
               </ul>

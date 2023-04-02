@@ -14,7 +14,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       success_url = 'https://broca.vercel.app/payment/success'
       cancel_url = 'https://broca.vercel.app/public/pricing'
     }
-    const {name,id} = req.body
+    const {name,id,tokens} = req.body
     const lineItems = [{ 
         price: id,
         quantity: 1
@@ -33,7 +33,8 @@ export default withApiAuthRequired(async function handler(req, res) {
           payment_method_collection: 'if_required',
         metadata: {
             user: user.sub,
-            name,name
+            name,name,
+            tokens
         }
 
     })

@@ -1,6 +1,6 @@
 import { getSession } from "@auth0/nextjs-auth0";
 import { Configuration,OpenAIApi } from "openai"
-import { clientPromise } from "../../../lib/mongodb";
+import  clientPromise  from "../../../lib/mongodb";
 
 export default async function handler(req, res) {
     const config = new Configuration({
@@ -28,11 +28,12 @@ export default async function handler(req, res) {
       });
     
       console.log(response.data.usage.total_tokens);
+      const codeResponse = response.data.choices[0].text
       const token = response.data.usage.total_tokens
-      await db.collection("user").updateOne({auth0Id: user.sub},{$inc: {tokens: token}})
+      await db.collection("user").updateOne({auth0Id: user.sub},{$inc: {tokens: -token}})
       const post = await db.collection("posts").insertOne({
-          title,
-          content,
+          code,
+          codeResponse,
           userId:userProfile._id,
           createdAt: new Date()
       })
