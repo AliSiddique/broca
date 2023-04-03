@@ -9,33 +9,33 @@ import {
   
   const features = [
     {
-      name: 'Push to deploy.',
-      description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
+      name: 'Efficiency checker.',
+      description: 'Efficiency checker is a tool that helps you to check the efficiency of your code.',
       icon: CloudArrowUpIcon,
     },
     {
-      name: 'SSL certificates.',
-      description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
+      name: 'OpenAI reports.',
+      description: 'Get the latest OpenAI reports in your inbox',
       icon: LockClosedIcon,
     },
     {
-      name: 'Simple queues.',
-      description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus voluptas blanditiis et.',
+      name: 'Unlimited products.',
+      description: 'Unlimited products for your projects with our Basic plan and above.',
       icon: ArrowPathIcon,
     },
     {
-      name: 'Advanced security.',
-      description: 'Iure sed ab. Aperiam optio placeat dolor facere. Officiis pariatur eveniet atque et dolor.',
+      name: 'Premium access to new OpenAI APIs.',
+      description: 'Get access to new OpenAI APIs before anyone else',
       icon: FingerPrintIcon,
     },
     {
-      name: 'Powerful API.',
-      description: 'Laudantium tempora sint ut consectetur ratione. Ut illum ut rem numquam fuga delectus.',
+      name: 'Beautifull UI.',
+      description: 'A beautiful UI that makes your work easier.',
       icon: Cog6ToothIcon,
     },
     {
-      name: 'Database backups.',
-      description: 'Culpa dolorem voluptatem velit autem rerum qui et corrupti. Quibusdam quo placeat.',
+      name: 'Export your code',
+      description: 'Export your code to your local machine',
       icon: ServerIcon,
     },
   ]
