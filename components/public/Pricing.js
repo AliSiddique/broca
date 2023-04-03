@@ -150,7 +150,15 @@ export default function Pricing({allowed}) {
                   {loading ? <ClipLoader color="#FFFFFF" size={15} />: "Buy"}
                 </button>
               ): (
-                <Link href="/api/auth/login">
+                <Link
+                aria-describedby={tier.id}
+                className={classNames(
+                  tier.mostPopular
+                    ? 'bg-sky-500 text-white shadow-sm hover:bg-sky-400  focus-visible:outline-sky-500'
+                    : 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white',
+                  'mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
+                )}
+                href="/api/auth/login">
                   Buy
                 </Link>
               )}
