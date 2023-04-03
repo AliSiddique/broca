@@ -4,6 +4,10 @@ import stripeInit from 'stripe'
 const stripe = stripeInit(process.env.STRIPE_SECRET_KEY)
 export default withApiAuthRequired(async function handler(req, res) {
     const {user} = await getSession(req,res)
+    if(!user){
+        res.status(401).json({error: 'Unauthorized'})
+        return
+    }
     let success_url;
     let cancel_url;
     const environment = process.env.NODE_ENV 
