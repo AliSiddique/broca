@@ -3,6 +3,7 @@ import { RadioGroup } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import axios from 'axios'
 import { ClipLoader } from 'react-spinners'
+import Link from 'next/link'
 
 const frequencies = [
   { value: 'monthly', label: 'Monthly', priceSuffix: '/month' },
