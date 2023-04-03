@@ -62,7 +62,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Pricing() {
+export default function Pricing({allowed}) {
 
   const [frequency, setFrequency] = useState(frequencies[0])
   const [loading, setLoading] = useState(false)
@@ -134,19 +134,26 @@ export default function Pricing() {
                 <span className="text-4xl font-bold tracking-tight text-white">£{tier.price[frequency.value]}</span>
                 <span className="text-sm font-semibold leading-6 text-gray-300">{frequency.priceSuffix}</span>
               </p>
-              <button
-              disabled={loading}
-                onClick={() => handleSubmit(tier.name,tier.priceId[frequency.value],tier.tokens[frequency.value])}
-                aria-describedby={tier.id}
-                className={classNames(
-                  tier.mostPopular
-                    ? 'bg-sky-500 text-white shadow-sm hover:bg-sky-400  focus-visible:outline-sky-500'
-                    : 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white',
-                  'mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
-                )}
-              >
-               {loading ? <ClipLoader color="#FFFFFF" size={15} />: "Buy"}
-              </button>
+              {allowed ? (
+                <button
+                disabled={loading}
+                  onClick={() => handleSubmit(tier.name,tier.priceId[frequency.value],tier.tokens[frequency.value])}
+                  aria-describedby={tier.id}
+                  className={classNames(
+                    tier.mostPopular
+                      ? 'bg-sky-500 text-white shadow-sm hover:bg-sky-400  focus-visible:outline-sky-500'
+                      : 'bg-white/10 text-white hover:bg-white/20 focus-visible:outline-white',
+                    'mt-6 block rounded-md py-2 px-3 text-center text-sm font-semibold leading-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
+                  )}
+                >
+                  {loading ? <ClipLoader color="#FFFFFF" size={15} />: "Buy"}
+                </button>
+              ): (
+                <Link href="/api/auth/login">
+                  Buy
+                </Link>
+              )}
+         
               <ul role="list" className="mt-8 space-y-3 text-sm leading-6 text-gray-300 xl:mt-10">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex gap-x-3">
@@ -163,3 +170,18 @@ export default function Pricing() {
   )
 }
 
+export const getServerSideProps = async (context) => {
+  const {user} = await getSession(context)
+  let allowed;
+  if (user) {
+      allowed = true
+  }
+  else  {
+      allowed = false
+  }
+  return {
+    props: {
+      allowed
+    },
+  }
+}
