@@ -9,8 +9,7 @@ export default function CTA() {
               Start using our app today.
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-              Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam aliqua proident excepteur
-              commodo do ea.
+              With our app, you can get the best out of your work. We have a wide range of features that will help you.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
