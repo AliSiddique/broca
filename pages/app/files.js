@@ -3,6 +3,9 @@ import { Dialog, Menu, Transition } from '@headlessui/react'
 import React from 'react'
 import { getSession } from '@auth0/nextjs-auth0'
 import Image from 'next/image'
+import clientPromise from '../../lib/mongodb'
+import { ObjectId } from 'mongodb'
+
 import {
   Bars3Icon,
   BellIcon,
@@ -17,10 +20,7 @@ import {
   BookOpenIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { ArrowDownIcon } from '@heroicons/react/20/solid'
 import { toast } from 'react-hot-toast'
-import Stats from '../../components/app/stats'
-import Services from '../../components/app/services'
 import Empty from '../../components/app/files/Empty'
 
 
@@ -41,54 +41,16 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Layout({user}) {
+export default function Layout({posts,user}) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [largeMenu, setLargeMenu] = useState(false)
     const [selectedPerson, setSelectedPerson] = useState("java")
     const [search, setSearch] = useState("")
     const [code, setCode] = React.useState('');
-    function setEditorTheme(monaco) {
-      monaco.editor.defineTheme('onedark', {
-        base: 'vs-dark',
-        inherit: true,
-        rules: [
-          {
-            token: 'comment',
-            foreground: '#5d7988',
-            fontStyle: 'italic'
-          },
-          { token: 'constant', foreground: '#e06c75' }
-        ],
-        colors: {
-          'editor.background': '#21252b'
-        }
-      });
-    }
-  const toastPrompt = () => {
-    return toast('Saved!',
-    {
-      icon: '👏',
-      style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
-      },
-    }
-  );
-    }
 
-
+  console.log(posts);
   // export code with the extension and code
-  function exportCode() {
-    const change = code.replace("\n", '');
-    const fileData = JSON.stringify(code);
-    const blob = new Blob([fileData], { type: "text/plain" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.download = `exports.${selectedPerson.extension}`;
-    link.href = url;
-    link.click();
-  }
+
 
   return (
     <>
@@ -177,6 +139,8 @@ export default function Layout({user}) {
               className="h-12 w-auto rounded-full"
               src="/logo.png"
               alt="Your Company"
+              width={largeMenu ? 50 : 30}
+              height={largeMenu ? 50 : 30}
             />
             <span className={largeMenu ? 'text-white pl-6 font-bold' : "" }>{largeMenu ? "Broca" : ""}</span>
           </div>
@@ -290,7 +254,20 @@ export default function Layout({user}) {
           <main>
   
             <div className="p-4 h-screen">
-                <Empty/>
+              {posts.length < 0 ? (
+                  <Empty/>
+              ):(
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {posts.map((post) => (
+                    <div key={post._id} className="bg-white shadow overflow-hidden sm:rounded-lg">
+                      <div className="px-4 py-5 sm:px-6">
+                        <h3 className="text-lg leading-6 font-medium text-gray-900">{post.code}</h3>
+                        <p className="mt-1 max-w-2xl text-sm text-gray-500">{post.codeResponse}</p>
+                      </div>
+                    </div> 
+                    ))}
+            </div>
+              )}
             </div>
       
           </main>
@@ -301,14 +278,32 @@ export default function Layout({user}) {
     </>
   )
 }
+export async function getServerSideProps (ctx) {
+  const userSession = await getSession(ctx.req, ctx.res)
+  const client = await clientPromise;
+  const db = await client.db("brack");
+  const user = await db.collection("user").findOne({
+      auth0Id: userSession.user.sub
+  })
+  if(!user){
+      return {
+         tokens:0,
+         posts:[]
+      }
+  }
+  const posts = await db.collection("posts").find({
+      userId: user._id
+  }).toArray()
+return {
+  props: {
+      tokens: user.tokens,
+      posts: posts.map(({createdAt,_id,userId,...rest}) => ({
+          _id: _id.toString(),
+          createdAt: createdAt.toString(),
+          ...rest,
+      })),
+      user:new ObjectId(user._id).toString()
 
-export const getServerSideProps = async (context) => {
-  const { req, res } = context;
-  const {user} = await getSession(context.req, context.res);
-
-  
-
-  return {
-    props: { user },
-  };
+  }
+}
 }

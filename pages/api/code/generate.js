@@ -37,6 +37,11 @@ export default async function handler(req, res) {
           userId:userProfile._id,
           createdAt: new Date()
       })
+      const tokensUsed = await db.collection("tokensUsed").insertOne({
+        token,
+        userId:userProfile._id,
+        createdAt: new Date()
+    })
 const data  = response.data.choices[0].text.replace(/\\n/g, "")
     res.status(200).json({ name: data,tokens:token})
   }
