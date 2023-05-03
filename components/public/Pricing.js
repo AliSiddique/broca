@@ -151,7 +151,7 @@ export default function Pricing({allowed}) {
                 </button>
               ): (
                 <Link
-                aria-describedby={tier.id}
+                // aria-describedby={tier.id}
                 className={classNames(
                   tier.mostPopular
                     ? 'bg-sky-500 text-white shadow-sm hover:bg-sky-400  focus-visible:outline-sky-500'

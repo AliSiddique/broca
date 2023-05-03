@@ -305,8 +305,9 @@ export default function Layout({user}) {
 export const getServerSideProps = async (context) => {
   const { req, res } = context;
   const {user} = await getSession(context.req, context.res);
-
-  
+  const client = await clientPromise;
+  const db = await client.db("brack")
+  const userProfile = await db.collection("user").findOne({auth0Id: user.sub})  
 
   return {
     props: { user },
